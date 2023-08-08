@@ -1,17 +1,13 @@
-# 10809번
-word = input()
-for i in range(ord('a'), ord('z')+1):
-    print(word.find(chr(i)), end=' ')
+# 1152번
+print(len(input().split()))
 
-# 2675번
-t = int(input())
-words = list()
-
-for i in range(0, t):
-    rANDs = input().split()
-    words.append(rANDs)
-
-for i in range(0, t):
-    for k in range(0, len(words[i][1])):
-        print(words[i][1][k] * int(words[i][0]), end='')
-    print()
+# 2908번
+# 두 수 A와 B가 주어짐(세 자리 수)
+# 두 수를 거꾸로 읽어서 큰 수를 출력
+words = input().split()
+A = int(words[0][2]) * 100 + int(words[0][1]) * 10 + int(words[0][0])
+B = int(words[1][2]) * 100 + int(words[1][1]) * 10 + int(words[1][0])
+if A > B:
+    print(A)
+else:
+    print(B)
