@@ -1,20 +1,29 @@
 # 코딩 기초 트레이닝
-# a와 b 출력하기
+# 덧셈식 출력하기
 a, b = map(int, input().strip().split(' '))
-print(f'a = {a}')
-print(f'b = {b}')
+print(f'{a} + {b} = {a+b}')
 
 
-# 문자열 반복해서 출력하기
-a, b = input().strip().split(' ')
-b = int(b)
-print(a * b)
+# 문자열 붙여서 출력하기
+str1, str2 = input().strip().split(' ')
+print(str1+str2)
 
 
-# 대소문자 바꿔서 출력하기
+# 문자열 돌리기
 str = input()
-print(str.swapcase())
+for i in range(len(str)):
+    print(str[i])
 
 
-# 특수문자 출력하기
-print('!@#$%^&*(\\\'\"<>?:;')
+# 홀짝 구분하기
+n = int(input())
+if n % 2 == 0:
+    print(f'{n} is even')
+else:
+    print(f'{n} is odd')
+
+
+# 문자열 겹쳐쓰기
+def solution(my_string, overwrite_string, s):
+    answer = my_string[:s] + overwrite_string + my_string[s+len(overwrite_string):]
+    return answer
