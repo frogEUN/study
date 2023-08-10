@@ -1,19 +1,25 @@
-# 25304번 (영수증)
-# 첫째 줄 - 영수증에 적힌 총 금액
-# 둘째 줄 - 구매한 물건의 종류의 수
-# 각 물건의 가격과 개수
-x = int(input())
-n = int(input())
-result = 0
-for i in range(n):
-    a, b = input().split()
-    result += int(a) * int(b)
-if x == result:
-    print('Yes')
-else:
-    print('No')
+# 10998번
+nums = input().split()
+print(int(nums[0]) * int(nums[1]))
 
 
-# 25314번
-n = int(input())
-print('long ' * (n//4) + 'int')
+# 10869번
+nums = input().split()
+a = int(nums[0])
+b = int(nums[1])
+print(a+b)
+print(a-b)
+print(a*b)
+print(a//b)
+print(a % b)
+
+'''
+# 다른 풀이
+A, B = map(int, input().split())
+print(A+B, A-B, A*B, A//B, A%B)
+'''
+
+
+# 10926번
+id = input()
+print(id + "??!")
