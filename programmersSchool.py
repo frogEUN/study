@@ -1,29 +1,44 @@
 # 코딩 기초 트레이닝
-# 덧셈식 출력하기
-a, b = map(int, input().strip().split(' '))
-print(f'{a} + {b} = {a+b}')
+# 문자열 섞기
+def solution(str1, str2):
+    answer = ''
+    for i in range(len(str1)):
+        answer = answer + str1[i] + str2[i]
+    return answer
 
 
-# 문자열 붙여서 출력하기
-str1, str2 = input().strip().split(' ')
-print(str1+str2)
+# 문자 리스트를 문자열로 변환하기
+def solution(arr):
+    answer = ''
+    for i in range(len(arr)):
+        answer = answer + arr[i]
+    return answer
 
 
-# 문자열 돌리기
-str = input()
-for i in range(len(str)):
-    print(str[i])
+# 문자열 곱하기
+def solution(my_string, k):
+    answer = my_string * k
+    return answer
 
 
-# 홀짝 구분하기
-n = int(input())
-if n % 2 == 0:
-    print(f'{n} is even')
-else:
-    print(f'{n} is odd')
+# 더 크게 합치기
+def solution(a, b):
+    ab = str(a) + str(b)
+    ba = str(b) + str(a)
+    ab = int(ab)
+    ba = int(ba)
+    if ab >= ba:
+        answer = ab
+    else:
+        answer = ba
+    return answer
 
 
-# 문자열 겹쳐쓰기
-def solution(my_string, overwrite_string, s):
-    answer = my_string[:s] + overwrite_string + my_string[s+len(overwrite_string):]
+# 두 수의 연산값 비교하기
+def solution(a, b):
+    ab = int(str(a) + str(b))
+    if ab >= 2*a*b:
+        answer = ab
+    else:
+        answer = 2*a*b
     return answer
