@@ -1,44 +1,64 @@
 # 코딩 기초 트레이닝
-# 문자열 섞기
-def solution(str1, str2):
-    answer = ''
-    for i in range(len(str1)):
-        answer = answer + str1[i] + str2[i]
-    return answer
-
-
-# 문자 리스트를 문자열로 변환하기
-def solution(arr):
-    answer = ''
-    for i in range(len(arr)):
-        answer = answer + arr[i]
-    return answer
-
-
-# 문자열 곱하기
-def solution(my_string, k):
-    answer = my_string * k
-    return answer
-
-
-# 더 크게 합치기
-def solution(a, b):
-    ab = str(a) + str(b)
-    ba = str(b) + str(a)
-    ab = int(ab)
-    ba = int(ba)
-    if ab >= ba:
-        answer = ab
+# n의 배수
+def solution(num, n):
+    if num % n == 0:
+        answer = 1
     else:
-        answer = ba
+        answer = 0
     return answer
 
 
-# 두 수의 연산값 비교하기
-def solution(a, b):
-    ab = int(str(a) + str(b))
-    if ab >= 2*a*b:
-        answer = ab
+# 공배수
+def solution(number, n, m):
+    if number % n == 0 and number % m == 0:
+        answer = 1
     else:
-        answer = 2*a*b
+        answer = 0
     return answer
+
+
+# 홀짝에 따라 다른 값 반환하기
+def solution(n):
+    answer = 0
+    if n % 2 == 0:  # 짝수
+        for i in range(2, n+2, 2):
+            answer += i * i
+    else:  # 홀수
+        for i in range(1, n+2, 2):
+            answer += i
+    return answer
+
+
+# 조건 문자열
+def solution(ineq, eq, n, m):
+    if ineq == ">":
+        if eq == "=":
+            if n >= m:
+                return 1
+            else:
+                return 0
+        else:
+            if n > m:
+                return 1
+            else:
+                return 0
+    else:
+        if eq == "=":
+            if n <= m:
+                return 1
+            else:
+                return 0
+        else:
+            if n < m:
+                return 1
+            else:
+                return 0
+
+
+# flag에 따라 다른 값 반환하기
+# 두 정수 a, b와 boolean 변수 flag가 매개변수로 주어질 때, flag가 true면 a + b를 false면 a - b를 return 하는 solution 함수를 작성해 주세요.
+def solution(a, b, flag):
+    if flag:
+        return a + b
+    else:
+        return a - b
