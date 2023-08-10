@@ -1,64 +1,33 @@
-# 코딩 기초 트레이닝
-# n의 배수
-def solution(num, n):
-    if num % n == 0:
-        answer = 1
-    else:
-        answer = 0
+# Lv1. 제일 작은 수 제거하기
+def solution(arr):
+    answer = arr
+    small = arr[0]
+    small_idx = 0
+    for i in range(len(arr)):
+        if arr[i] <= small:
+            small = arr[i]
+            small_idx = i
+    del answer[small_idx]
+    if len(answer) == 0:
+        answer = [-1]
     return answer
 
 
-# 공배수
-def solution(number, n, m):
-    if number % n == 0 and number % m == 0:
-        answer = 1
-    else:
-        answer = 0
+'''
+def solution(players, callings):
+    answer = players
+    for call in callings:
+        idx = players.index(call)
+        answer[idx], answer[idx-1] = answer[idx-1], answer[idx]
     return answer
-
-
-# 홀짝에 따라 다른 값 반환하기
-def solution(n):
-    answer = 0
-    if n % 2 == 0:  # 짝수
-        for i in range(2, n+2, 2):
-            answer += i * i
-    else:  # 홀수
-        for i in range(1, n+2, 2):
-            answer += i
-    return answer
-
-
-# 조건 문자열
-def solution(ineq, eq, n, m):
-    if ineq == ">":
-        if eq == "=":
-            if n >= m:
-                return 1
-            else:
-                return 0
-        else:
-            if n > m:
-                return 1
-            else:
-                return 0
-    else:
-        if eq == "=":
-            if n <= m:
-                return 1
-            else:
-                return 0
-        else:
-            if n < m:
-                return 1
-            else:
-                return 0
-
-
-# flag에 따라 다른 값 반환하기
-# 두 정수 a, b와 boolean 변수 flag가 매개변수로 주어질 때, flag가 true면 a + b를 false면 a - b를 return 하는 solution 함수를 작성해 주세요.
-def solution(a, b, flag):
-    if flag:
-        return a + b
-    else:
-        return a - b
+''' # 시간초과
+'''
+def solution(players, callings):
+    player_lank = {player: lank for player in players for lank in range(1, len(players)+1)}
+    lank_player = {lank: player for player in players for lank in range(1, len(players)+1)}
+    for call in callings:
+        pre_lank = player_lank[call]
+        player_lank[call], player_lank[lank_player[pre_lank-1]] = player_lank[lank_player[pre_lank-1]], player_lank[call]
+        lank_player[pre_lank], lank_player[pre_lank-1] = lank_player[pre_lank-1], lank_player[pre_lank]
+    return [lank_player[i] for i in range(1, len(players)+1)]
+'''  # 틀림
