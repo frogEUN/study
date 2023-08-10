@@ -1,24 +1,13 @@
-# 4장 - 선택하기: if
+# 7장 - 튜플과 리스트
 
-furry = True
-large = True
-if furry:
-    if large:
-        print("yeti")
-    else:
-        print("cat")
-else:
-    if large:
-        print("whale")
-    else:
-        print("human")
+# 7.1
+year_lists = [2001 + i for i in range(6)]
+print(year_lists)
 
-# 4.1
-secret = 8
-guess = 2
-if secret == guess:
-    print("just right")
-elif guess > secret:
-    print("too high")
-else:
-    print("too low")
+# 7.4 ~ 7.7
+things = ["mozzarella", "cinderella", "salmonella"]
+things[1].capitalize()
+print(things)
+print(things[0].upper())
+del things[2]
+print(things)
