@@ -1,33 +1,69 @@
-# Lv1. 제일 작은 수 제거하기
-def solution(arr):
-    answer = arr
-    small = arr[0]
-    small_idx = 0
-    for i in range(len(arr)):
-        if arr[i] <= small:
-            small = arr[i]
-            small_idx = i
-    del answer[small_idx]
-    if len(answer) == 0:
-        answer = [-1]
+# 코딩 기초 트레이닝
+
+# 코드 처리하기
+def solution(code):
+    mode = 0
+    ret = ''
+    for i in range(len(code)):
+        if mode == 0:
+            if code[i] == '1':
+                mode = 1
+            else:
+                if i % 2 == 0:
+                    ret = ret + code[i]
+        else:
+            if code[i] == '1':
+                mode = 0
+            else:
+                if i % 2 == 1:
+                    ret = ret + code[i]
+    if len(ret) == 0:
+        return "EMPTY"
+    return ret
+
+
+# 등차수열의 특정한 항만 더하기
+def solution(a, d, included):
+    answer = 0
+    for i in range(len(included)):
+        if included[i] == True:
+            answer += a + i * d
     return answer
 
 
-'''
-def solution(players, callings):
-    answer = players
-    for call in callings:
-        idx = players.index(call)
-        answer[idx], answer[idx-1] = answer[idx-1], answer[idx]
+# 주사위 게임 2
+def solution(a, b, c):
+    answer = 0
+    if a != b and b != c and a != c:
+        answer += a + b + c
+    elif a == b and b == c:
+        answer += (a+b+c)*(a*a+b*b+c*c)*(a**3+b**3+c**3)
+    elif a == b or b == c or a == c:
+        answer += (a+b+c)*(a*a+b*b+c*c)
     return answer
-''' # 시간초과
-'''
-def solution(players, callings):
-    player_lank = {player: lank for player in players for lank in range(1, len(players)+1)}
-    lank_player = {lank: player for player in players for lank in range(1, len(players)+1)}
-    for call in callings:
-        pre_lank = player_lank[call]
-        player_lank[call], player_lank[lank_player[pre_lank-1]] = player_lank[lank_player[pre_lank-1]], player_lank[call]
-        lank_player[pre_lank], lank_player[pre_lank-1] = lank_player[pre_lank-1], lank_player[pre_lank]
-    return [lank_player[i] for i in range(1, len(players)+1)]
-'''  # 틀림
+
+
+# 원소들의 곱과 합
+def solution(num_list):
+    a = 1
+    b = 0
+    for num in num_list:
+        a *= num
+        b += num
+    b = b*b
+    if a < b:
+        return 1
+    else:
+        return 0
+
+
+# 이어 붙인 수
+def solution(num_list):
+    even = ''
+    odd = ''
+    for num in num_list:
+        if num % 2 == 0:
+            even = even + str(num)
+        else:
+            odd = odd + str(num)
+    return int(even) + int(odd)
