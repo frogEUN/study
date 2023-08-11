@@ -1,69 +1,66 @@
 # 코딩 기초 트레이닝
 
-# 코드 처리하기
-def solution(code):
-    mode = 0
-    ret = ''
-    for i in range(len(code)):
-        if mode == 0:
-            if code[i] == '1':
-                mode = 1
-            else:
-                if i % 2 == 0:
-                    ret = ret + code[i]
-        else:
-            if code[i] == '1':
-                mode = 0
-            else:
-                if i % 2 == 1:
-                    ret = ret + code[i]
-    if len(ret) == 0:
-        return "EMPTY"
-    return ret
-
-
-# 등차수열의 특정한 항만 더하기
-def solution(a, d, included):
-    answer = 0
-    for i in range(len(included)):
-        if included[i] == True:
-            answer += a + i * d
-    return answer
-
-
-# 주사위 게임 2
-def solution(a, b, c):
-    answer = 0
-    if a != b and b != c and a != c:
-        answer += a + b + c
-    elif a == b and b == c:
-        answer += (a+b+c)*(a*a+b*b+c*c)*(a**3+b**3+c**3)
-    elif a == b or b == c or a == c:
-        answer += (a+b+c)*(a*a+b*b+c*c)
-    return answer
-
-
-# 원소들의 곱과 합
+# 마지막 두 원소
 def solution(num_list):
-    a = 1
-    b = 0
-    for num in num_list:
-        a *= num
-        b += num
-    b = b*b
-    if a < b:
-        return 1
+    answer = []
+    if num_list[-1] > num_list[-2]:
+        answer.append(num_list[-1] - num_list[-2])
     else:
-        return 0
+        answer.append(num_list[-1]*2)
+    return num_list + answer
 
 
-# 이어 붙인 수
-def solution(num_list):
-    even = ''
-    odd = ''
-    for num in num_list:
-        if num % 2 == 0:
-            even = even + str(num)
-        else:
-            odd = odd + str(num)
-    return int(even) + int(odd)
+# 수 조작하기 1
+def solution(n, control):
+    for i in control:
+        if i == 'w':
+            n += 1
+        elif i == 's':
+            n -= 1
+        elif i == 'd':
+            n += 10
+        elif i == 'a':
+            n -= 10
+    return n
+
+
+# 수 조작하기 2
+def solution(numLog):
+    answer = ''
+    for i in range(1, len(numLog)):
+        temp = numLog[i] - numLog[i-1]
+        if temp == 1:
+            answer = answer + 'w'
+        elif temp == -1:
+            answer = answer + 's'
+        elif temp == 10:
+            answer = answer + 'd'
+        elif temp == -10:
+            answer = answer + 'a'
+    return answer
+
+
+# 수열과 구간 쿼리 3
+def solution(arr, queries):
+    for q in queries:
+        arr[q[0]], arr[q[1]] = arr[q[1]], arr[q[0]]
+    return arr
+
+
+# 수열과 구간 쿼리 2
+def solution(arr, queries):
+    answer = []
+    small = -1
+    for q in queries:
+        for i in range(len(arr)):
+            if q[0] <= i <= q[1]:
+                if arr[i] > q[2]:
+                    if small == -1:
+                        small = arr[i]
+                    else:
+                        if small > arr[i]:
+                            small = arr[i]
+        answer.append(small)
+        small = -1
+    return answer
+
