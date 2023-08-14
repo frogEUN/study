@@ -1,40 +1,46 @@
 # 코딩 기초 트레이닝
 
-# 문자열의 앞의 n글자
-def solution(my_string, n):
-    return my_string[:n]
-
-
-# 접두사인지 확인하기
-def solution(my_string, is_prefix):
-    jub = list()
-    for i in range(len(my_string)):
-        jub.append(my_string[:i])
-    if is_prefix in jub:
-        return 1
-    return 0
-
-
-# 문자열 뒤집기
-def solution(my_string, s, e):
-    my_string = list(my_string)
-    temp = my_string[s:e+1]
-    for idx, w in enumerate(temp[::-1]):
-        my_string[s+idx] = w
-    return ''.join(my_string)
-
-
-# 세로 읽기
-def solution(my_string, m, c):
-    return my_string[c-1::m]
-
-
-# qr code
-def solution(q, r, code):
-    code = list(code)
+# 문자 개수 세기
+def solution(my_string):
     answer = []
-    for i in range(len(code)):
-        if i % q == r:
-            answer.append(code[i])
-    return ''.join(answer)
+    for i in range(ord('A'), ord('Z')+1):
+        answer.append(my_string.count(chr(i)))
+    for i in range(ord('a'), ord('z')+1):
+        answer.append(my_string.count(chr(i)))
+    return answer
+
+
+# 배열 만들기 1
+def solution(n, k):
+    answer = []
+    for i in range(1, n+1):
+        if i % k == 0:
+            answer.append(i)
+    return answer
+
+
+# 글자 지우기
+def solution(my_string, indices):
+    my = list(my_string)
+    indices.sort(reverse=True)
+    for i in indices:
+        del my[i]
+    return ''.join(my)
+
+
+# 카운트 다운
+def solution(start, end):
+    answer = []
+    for i in range(start, end-1, -1):
+        answer.append(i)
+    return answer
+
+
+# 가까운 1 찾기
+def solution(arr, idx):
+    for i in range(idx, len(arr)):
+        if arr[i] == 1:
+            return i
+    return -1
+
 
