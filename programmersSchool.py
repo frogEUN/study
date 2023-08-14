@@ -1,46 +1,54 @@
 # 코딩 기초 트레이닝
 
-# 문자 개수 세기
-def solution(my_string):
-    answer = []
-    for i in range(ord('A'), ord('Z')+1):
-        answer.append(my_string.count(chr(i)))
-    for i in range(ord('a'), ord('z')+1):
-        answer.append(my_string.count(chr(i)))
-    return answer
+# 리스트 자르기
+def solution(n, slicer, num_list):
+    a, b, c = slicer[0], slicer[1], slicer[2]
+    if n == 1:
+        return num_list[:b + 1]
+    elif n == 2:
+        return num_list[a:]
+    elif n == 3:
+        return num_list[a:b + 1]
+    elif n == 4:
+        return num_list[a:b + 1:c]
 
 
-# 배열 만들기 1
-def solution(n, k):
-    answer = []
-    for i in range(1, n+1):
-        if i % k == 0:
-            answer.append(i)
-    return answer
-
-
-# 글자 지우기
-def solution(my_string, indices):
-    my = list(my_string)
-    indices.sort(reverse=True)
-    for i in indices:
-        del my[i]
-    return ''.join(my)
-
-
-# 카운트 다운
-def solution(start, end):
-    answer = []
-    for i in range(start, end-1, -1):
-        answer.append(i)
-    return answer
-
-
-# 가까운 1 찾기
-def solution(arr, idx):
-    for i in range(idx, len(arr)):
-        if arr[i] == 1:
+# 첫 번째로 나오는 음수
+def solution(num_list):
+    for i in range(len(num_list)):
+        if num_list[i] < 0:
             return i
     return -1
 
 
+# 배열 만들기 3
+def solution(arr, intervals):
+    answer = []
+    for k in range(len(intervals)):
+        for i in range(intervals[k][0], intervals[k][1]+1):
+            answer.append(arr[i])
+    return answer
+
+
+# 2의 영역
+def solution(arr):
+    last = -1
+    for i in range(len(arr)):
+        if arr[i] == 2:
+            last = i
+    if last == -1:
+        return [-1]
+    if arr.index(2) == last:
+        return [2]
+    return arr[arr.index(2):last+1]
+
+
+# 배열 조각하기
+def solution(arr, query):
+    answer = arr
+    for i in range(len(query)):
+        if i % 2 == 0:
+            answer = answer[:query[i]+1]
+        else:
+            answer = answer[query[i]:]
+    return answer
