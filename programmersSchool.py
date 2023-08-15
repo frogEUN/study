@@ -1,54 +1,37 @@
 # 코딩 기초 트레이닝
 
-# 리스트 자르기
-def solution(n, slicer, num_list):
-    a, b, c = slicer[0], slicer[1], slicer[2]
-    if n == 1:
-        return num_list[:b + 1]
-    elif n == 2:
-        return num_list[a:]
-    elif n == 3:
-        return num_list[a:b + 1]
-    elif n == 4:
-        return num_list[a:b + 1:c]
+# n 번째 원소부터
+def solution(num_list, n):
+    return num_list[n-1:]
 
 
-# 첫 번째로 나오는 음수
-def solution(num_list):
-    for i in range(len(num_list)):
-        if num_list[i] < 0:
-            return i
-    return -1
+# 순서 바꾸기
+def solution(num_list, n):
+    return num_list[n:] + num_list[:n]
 
 
-# 배열 만들기 3
-def solution(arr, intervals):
-    answer = []
-    for k in range(len(intervals)):
-        for i in range(intervals[k][0], intervals[k][1]+1):
-            answer.append(arr[i])
-    return answer
+# 왼쪽 오른쪽
+def solution(str_list):
+    if str_list.count('l') == str_list.count('r') == 0:
+        return []
+    elif str_list.count('l') == 0:
+        return str_list[str_list.index('r') + 1:]
+    elif str_list.count('r') == 0:
+        return str_list[:str_list.index('l')]
+    l = str_list.index('l')
+    r = str_list.index('r')
+    if l < r:
+        return str_list[:l]
+    else:
+        return str_list[r + 1:]
 
 
-# 2의 영역
-def solution(arr):
-    last = -1
-    for i in range(len(arr)):
-        if arr[i] == 2:
-            last = i
-    if last == -1:
-        return [-1]
-    if arr.index(2) == last:
-        return [2]
-    return arr[arr.index(2):last+1]
+# n 번째 원소까지
+def solution(num_list, n):
+    return num_list[:n]
 
 
-# 배열 조각하기
-def solution(arr, query):
-    answer = arr
-    for i in range(len(query)):
-        if i % 2 == 0:
-            answer = answer[:query[i]+1]
-        else:
-            answer = answer[query[i]:]
-    return answer
+# n개 간격의 원소들
+def solution(num_list, n):
+    return num_list[::n]
+
