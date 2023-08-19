@@ -1,56 +1,74 @@
 # 코딩 기초 트레이닝
 
-# x 사이의 개수
-def solution(myString):
-    answer = myString.split('x')
-    result = list()
-    for a in answer:
-        result.append(len(a))
-    return result
-
-
-# 문자열 잘라서 정렬하기
-def solution(myString):
-    myString = myString.strip('x')
-    answer = myString.split('x')
-    answer = [a.strip('x') for a in answer if a.strip('x') != '']
-    answer.sort()
+# 세 개의 구분자
+def solution(myStr):
+    word = ''
+    answer = []
+    for i in myStr:
+        if i == 'a' or i == 'b' or i == 'c':
+            answer.append(word)
+            word = ""
+            continue
+        word = word + i
+    answer.append(word)
+    answer = [a for a in answer if a != ""]
+    if len(answer) == 0:
+        return ["EMPTY"]
     return answer
 
 
-# 간단한 식 계산하기
-def solution(binomial):
-    temp = binomial.split()
-    a = int(temp[0])
-    op = temp[1]
-    b = int(temp[2])
-    if op == "+":
-        return a + b
-    elif op == "-":
-        return a - b
-    elif op == "*":
-        return a * b
+# 배열의 원소만큼 추가하기
+def solution(arr):
+    answer = []
+    for a in arr:
+        for i in range(a):
+            answer.append(a)
+    return answer
 
 
-# 문자열 바꿔서 찾기
-def solution(myString, pat):
-    myString = list(myString)
-    for i in range(len(myString)):
-        if myString[i] == "A":
-            myString[i] = "B"
+# 빈 배열에 추가, 삭제하기
+def solution(arr, flag):
+    X = []
+    for i in range(len(flag)):
+        if flag[i] == True:
+            for k in range(arr[i]*2):
+                X.append(arr[i])
         else:
-            myString[i] = "A"
-    myString = ''.join(myString)
-    temp = myString.find(pat)
-    if temp == -1:
-        return 0
-    return 1
+            X = X[:len(X)-arr[i]]
+    return X
 
 
-# rny_string
-def solution(rny_string):
-    my = list(rny_string)
-    for i in range(len(my)):
-        if my[i] == "m":
-            my[i] = "rn"
-    return ''.join(my)
+# 배열 만들기 6
+def solution(arr):
+    stk = list()
+    i = 0
+    while True:
+        if len(stk) == 0:
+            stk.append(arr[i])
+            i += 1
+        elif stk[-1] == arr[i]:
+            del stk[-1]
+            i += 1
+        else:
+            stk.append(arr[i])
+            i += 1
+        if i >= len(arr):
+            break
+    if len(stk) == 0:
+        return [-1]
+    return stk
+
+
+# 무작위로 K개의 수 뽑기
+def solution(arr, k):
+    answer = []
+    for a in arr:
+        if answer.count(a) == 0:
+            answer.append(a)
+        if len(answer) >= k:
+            break
+    while True:
+        if len(answer) >= k:
+            break
+        answer.append(-1)
+    return answer
