@@ -1,74 +1,66 @@
 # 코딩 기초 트레이닝
 
-# 세 개의 구분자
-def solution(myStr):
-    word = ''
-    answer = []
-    for i in myStr:
-        if i == 'a' or i == 'b' or i == 'c':
-            answer.append(word)
-            word = ""
-            continue
-        word = word + i
-    answer.append(word)
-    answer = [a for a in answer if a != ""]
-    if len(answer) == 0:
-        return ["EMPTY"]
-    return answer
-
-
-# 배열의 원소만큼 추가하기
+# 배열의 길이를 2의 거듭제곱으로 만들기
 def solution(arr):
-    answer = []
-    for a in arr:
-        for i in range(a):
-            answer.append(a)
-    return answer
-
-
-# 빈 배열에 추가, 삭제하기
-def solution(arr, flag):
-    X = []
-    for i in range(len(flag)):
-        if flag[i] == True:
-            for k in range(arr[i]*2):
-                X.append(arr[i])
-        else:
-            X = X[:len(X)-arr[i]]
-    return X
-
-
-# 배열 만들기 6
-def solution(arr):
-    stk = list()
-    i = 0
     while True:
-        if len(stk) == 0:
-            stk.append(arr[i])
-            i += 1
-        elif stk[-1] == arr[i]:
-            del stk[-1]
-            i += 1
+        n = len(arr)
+        if n & (n-1) == 0:
+            return arr
+        arr.append(0)
+    # n이 2의 거듭제곱이라면 n과 n-1을 & 연산 했을 때 0이 나온다
+
+
+# 배열 비교하기
+def solution(arr1, arr2):
+    a1, a2 = 0, 0
+    if len(arr1) > len(arr2):
+        return 1
+    elif len(arr1) < len(arr2):
+        return -1
+    else:
+        for a in arr1:
+            a1 += a
+        for a in arr2:
+            a2 += a
+        if a1 > a2:
+            return 1
+        elif a1 < a2:
+            return -1
         else:
-            stk.append(arr[i])
-            i += 1
-        if i >= len(arr):
-            break
-    if len(stk) == 0:
-        return [-1]
-    return stk
+            return 0
 
 
-# 무작위로 K개의 수 뽑기
-def solution(arr, k):
-    answer = []
-    for a in arr:
-        if answer.count(a) == 0:
-            answer.append(a)
-        if len(answer) >= k:
-            break
-    while True:
-        if len(answer) >= k:
-            break
-        answer.append(-1)
-    return answer
+# 문자열 묶기
+def solution(strArr):
+    answer = {1: 0, 2: 0}
+    for str in strArr:
+        if len(str) in answer:
+            answer[len(str)] += 1
+        else:
+            answer[len(str)] = 1
+    max_ = 1
+    max_value = 0
+    for key, value in answer.items():
+        if value > max_value:
+            max_value = value
+            max_ = key
+    return max_value
+
+
+# 배열의 길이에 따라 다른 연산하기
+def solution(arr, n):
+    k = 0
+    if len(arr) % 2 == 0:
+        k = 1
+    else:
+        k = 0
+    for i in range(len(arr)):
+        if i % 2 == k:
+            arr[i] = arr[i] + n
+    return arr
+
+
+# 뒤에서 5등까지
+def solution(num_list):
+    num_list.sort();
+    return num_list[:5]
