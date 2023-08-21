@@ -62,5 +62,36 @@ def solution(arr, n):
 
 # 뒤에서 5등까지
 def solution(num_list):
-    num_list.sort();
-    return num_list[:5]
+    num_list.sort()
+    for i in range(5):
+        del num_list[0]
+    return num_list
+
+
+# 전국 대회 선발 고사
+def solution(rank, attendance):
+    stu = list()
+    for i in range(len(rank)):
+        if attendance[i]:
+            stu.append((i, rank[i]))
+    stu.sort(key=lambda x: x[1])
+    a, b, c = stu[:3]
+    return 10000 * a[0] + 100 * b[0] + c[0]
+
+
+# 정수 부분
+def solution(flo):
+    return int(flo)
+
+
+# 문자열 정수의 합
+def solution(num_str):
+    answer = 0
+    for n in num_str:
+        answer += int(n)
+    return answer
+
+
+# 문자열을 정수로 변환하기
+def solution(n_str):
+    return int(n_str)
