@@ -1,58 +1,58 @@
 # 코딩 기초 트레이닝
 
-# 부분 문자열
-def solution(str1, str2):
-    if str1 in str2:
-        return 1
-    else:
-        return 0
-
-
-# 꼬리 문자열
-def solution(str_list, ex):
-    answer = ''
-    for str in str_list:
-        if ex in str:
-            continue
-        else:
-            answer = answer + str
-    return answer
-
-
-# 정수 찾기
-def solution(num_list, n):
-    if num_list.count(n) == 0:
-        return 0
-    return 1
-
-
-# 주사위 게임 1
-def solution(a, b):
+# 커피 심부름
+def solution(order):
     answer = 0
-    if a % 2 == 1 and b % 2 == 1:
-        answer += a*a + b*b
-    elif a % 2 == 1 or b % 2 == 1:
-        answer += 2 * (a + b)
-    else:
-        answer += abs(a-b)
+    for o in order:
+        if 'americano' in o or o == 'anything':
+            answer += 4500
+        else:
+            answer += 5000
     return answer
 
 
-# 날짜 비교하기
-def solution(date1, date2):
-    if date1[0] < date2[0]:
-        return 1
-    elif date1[0] > date2[0]:
-        return 0
+# 그림 확대
+def solution(picture, k):
+    answer = []
+    temp = ''
+    for p in picture:
+        for s in p:
+            temp += s * k
+        for i in range(k):
+            answer.append(temp)
+        temp = ''
+    return answer
+
+
+# 조건에 맞게 수열 변환하기 3
+def solution(arr, k):
+    if k % 2 == 0:
+        for i in range(len(arr)):
+            arr[i] = arr[i] + k
     else:
-        if date1[1] < date2[1]:
-            return 1
-        elif date1[1] > date2[1]:
-            return 0
-        else:
-            if date1[2] < date2[2]:
-                return 1
-            elif date1[2] > date2[2]:
-                return 0
+        for i in range(len(arr)):
+            arr[i] = arr[i] * k
+    return arr
+
+
+# l로 만들기
+def solution(myString):
+    my = list(myString)
+    for i in range(len(my)):
+        if ord(my[i]) < ord('l'):
+            my[i] = 'l'
+    return ''.join(my)
+
+
+# 특별한 이차원 배열 1
+def solution(n):
+    answer = []
+    for i in range(n):
+        temp = []
+        for k in range(n):
+            if i == k:
+                temp.append(1)
             else:
-                return 0
+                temp.append(0)
+        answer.append(temp)
+    return answer
